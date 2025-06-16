@@ -1,0 +1,1203 @@
+Can't initialize prompt toolkit: No Windows console found. Are you running cmd.exe?
+
+aider\analytics.py:
+⋮
+│def is_uuid_in_percentage(uuid_str, percent):
+⋮
+│class Analytics:
+│    # providers
+│    mp = None
+⋮
+│    def load_data(self):
+⋮
+
+aider\args.py:
+⋮
+│def get_parser(default_config_files, git_root):
+⋮
+│def get_sample_yaml():
+⋮
+
+aider\args_formatter.py:
+⋮
+│class DotEnvFormatter(argparse.HelpFormatter):
+│    def start_section(self, heading):
+│        res = "\n\n"
+│        res += "#" * (len(heading) + 3)
+│        res += f"\n# {heading}"
+⋮
+│class YamlHelpFormatter(argparse.HelpFormatter):
+│    def start_section(self, heading):
+│        res = "\n\n"
+│        res += "#" * (len(heading) + 3)
+│        res += f"\n# {heading}"
+⋮
+│class MarkdownHelpFormatter(argparse.HelpFormatter):
+│    def start_section(self, heading):
+⋮
+
+aider\coders\architect_prompts.py:
+⋮
+│class ArchitectPrompts(CoderPrompts):
+⋮
+
+aider\coders\ask_prompts.py:
+⋮
+│class AskPrompts(CoderPrompts):
+⋮
+
+aider\coders\base_coder.py:
+⋮
+│class Coder:
+│    abs_fnames = None
+⋮
+│    def get_announcements(self):
+⋮
+│    def add_rel_fname(self, rel_fname):
+⋮
+│    def abs_root_path(self, path):
+⋮
+│    def get_repo_map(self, force_refresh=False):
+⋮
+│    def run(self, with_message=None, preproc=True):
+⋮
+│    def format_messages(self):
+⋮
+│    def get_inchat_relative_files(self):
+⋮
+│    def get_all_relative_files(self):
+⋮
+
+aider\coders\base_prompts.py:
+│class CoderPrompts:
+⋮
+
+aider\coders\chat_chunks.py:
+⋮
+│@dataclass
+│class ChatChunks:
+│    system: List = field(default_factory=list)
+⋮
+│    def all_messages(self):
+⋮
+│    def add_cache_control(self, messages):
+⋮
+
+aider\coders\context_prompts.py:
+⋮
+│class ContextPrompts(CoderPrompts):
+⋮
+
+aider\coders\editblock_coder.py:
+⋮
+│def find_original_update_blocks(content, fence=DEFAULT_FENCE, valid_fnames=None):
+⋮
+
+aider\coders\editblock_fenced_prompts.py:
+⋮
+│class EditBlockFencedPrompts(EditBlockPrompts):
+⋮
+
+aider\coders\editblock_func_prompts.py:
+⋮
+│class EditBlockFunctionPrompts(CoderPrompts):
+⋮
+
+aider\coders\editblock_prompts.py:
+⋮
+│class EditBlockPrompts(CoderPrompts):
+⋮
+
+aider\coders\editor_diff_fenced_prompts.py:
+⋮
+│class EditorDiffFencedPrompts(EditBlockFencedPrompts):
+⋮
+
+aider\coders\editor_editblock_prompts.py:
+⋮
+│class EditorEditBlockPrompts(EditBlockPrompts):
+⋮
+
+aider\coders\editor_whole_prompts.py:
+⋮
+│class EditorWholeFilePrompts(WholeFilePrompts):
+⋮
+
+aider\coders\help_prompts.py:
+⋮
+│class HelpPrompts(CoderPrompts):
+⋮
+
+aider\coders\search_replace.py:
+⋮
+│def read_text(fname):
+⋮
+
+aider\coders\shell.py:
+│shell_cmd_prompt = """
+⋮
+│no_shell_cmd_prompt = """
+│Keep in mind these details about the user's platform and environment:
+│{platform}
+⋮
+│shell_cmd_reminder = """
+│Examples of when to suggest shell commands:
+│
+│- If you changed a self-contained html file, suggest an OS-appropriate command to open a browser to
+│- If you changed a CLI program, suggest the command to run it to see the new behavior.
+│- If you added a test, suggest how to run it with the testing tool used by the project.
+│- Suggest OS-appropriate commands to delete or rename files/directories, or other file system opera
+│- If your code changes add new dependencies, suggest the command to install them.
+│- Etc.
+│
+⋮
+
+aider\coders\single_wholefile_func_prompts.py:
+⋮
+│class SingleWholeFileFunctionPrompts(CoderPrompts):
+⋮
+
+aider\coders\udiff_coder.py:
+⋮
+│def find_diffs(content):
+⋮
+
+aider\coders\udiff_prompts.py:
+⋮
+│class UnifiedDiffPrompts(CoderPrompts):
+⋮
+
+aider\coders\udiff_simple_prompts.py:
+⋮
+│class UnifiedDiffSimplePrompts(UnifiedDiffPrompts):
+⋮
+
+aider\coders\wholefile_func_prompts.py:
+⋮
+│class WholeFileFunctionPrompts(CoderPrompts):
+⋮
+
+aider\coders\wholefile_prompts.py:
+⋮
+│class WholeFilePrompts(CoderPrompts):
+⋮
+
+aider\commands.py:
+⋮
+│class Commands:
+│    voice = None
+⋮
+│    def cmd_web(self, args, return_content=False):
+⋮
+│    def get_raw_completions(self, cmd):
+⋮
+│    def get_completions(self, cmd):
+⋮
+│    def get_commands(self):
+⋮
+│    def matching_commands(self, inp):
+⋮
+│    def run(self, inp):
+⋮
+
+aider\copypaste.py:
+⋮
+│class ClipboardWatcher:
+│    """Watches clipboard for changes and updates IO placeholder"""
+│
+⋮
+│    def start(self):
+⋮
+│    def stop(self):
+⋮
+
+aider\diffs.py:
+⋮
+│def create_progress_bar(percentage):
+⋮
+│def assert_newlines(lines):
+⋮
+│def diff_partial_update(lines_orig, lines_updated, final=False, fname=None):
+⋮
+│def find_last_non_deleted(lines_orig, lines_updated):
+⋮
+
+aider\dump.py:
+⋮
+│def cvt(s):
+⋮
+│def dump(*vals):
+⋮
+
+aider\editor.py:
+⋮
+│def print_status_message(success, message, style=None):
+⋮
+│def write_temp_file(
+│    input_data="",
+│    suffix=None,
+│    prefix=None,
+│    dir=None,
+⋮
+│def get_environment_editor(default=None):
+⋮
+│def discover_editor(editor_override=None):
+⋮
+│def pipe_editor(input_data="", suffix=None, editor=None):
+⋮
+
+aider\exceptions.py:
+⋮
+│@dataclass
+│class ExInfo:
+⋮
+│class LiteLLMExceptions:
+│    exceptions = dict()
+⋮
+│    def get_ex_info(self, ex):
+⋮
+
+aider\format_settings.py:
+│def scrub_sensitive_info(args, text):
+⋮
+
+aider\gui.py:
+⋮
+│class CaptureIO(InputOutput):
+│    lines = []
+│
+│    def tool_output(self, msg, log_only=False):
+⋮
+│    def tool_error(self, msg):
+⋮
+│    def tool_warning(self, msg):
+⋮
+│    def get_captured_lines(self):
+⋮
+│class GUI:
+│    prompt = None
+⋮
+│    def show_edit_info(self, edit):
+⋮
+│    def add_undo(self, commit_hash):
+⋮
+│    def prompt_pending(self):
+⋮
+
+aider\help.py:
+⋮
+│def fname_to_url(filepath):
+⋮
+
+aider\help_pats.py:
+⋮
+│exclude_website_pats = [
+│    "**/.DS_Store",
+│    "examples/**",
+│    "_posts/**",
+│    "HISTORY.md",
+│    "docs/benchmarks*md",
+│    "docs/ctags.md",
+│    "docs/unified-diffs.md",
+│    "docs/leaderboards/index.md",
+│    "assets/**",
+⋮
+
+aider\history.py:
+⋮
+│class ChatSummary:
+│    def __init__(self, models=None, max_tokens=1024):
+│        if not models:
+│            raise ValueError("At least one model must be provided")
+│        self.models = models if isinstance(models, list) else [models]
+│        self.max_tokens = max_tokens
+⋮
+│    def summarize_real(self, messages, depth=0):
+⋮
+│    def summarize_all(self, messages):
+⋮
+
+aider\io.py:
+⋮
+│def ensure_hash_prefix(color):
+⋮
+│class AutoCompleter(Completer):
+│    def __init__(
+│        self, root, rel_fnames, addable_rel_fnames, commands, encoding, abs_read_only_fnames=None
+⋮
+│    def get_command_completions(self, document, complete_event, text, words):
+⋮
+│    def get_completions(self, document, complete_event):
+⋮
+│class InputOutput:
+│    num_error_outputs = 0
+⋮
+│    def read_image(self, filename):
+⋮
+│    def read_text(self, filename, silent=False):
+⋮
+│    def write_text(self, filename, content, max_retries=5, initial_delay=0.1):
+⋮
+│    def interrupt_input(self):
+⋮
+│    def get_input(
+│        self,
+│        root,
+│        rel_fnames,
+│        addable_rel_fnames,
+│        commands,
+│        abs_read_only_fnames=None,
+│        edit_format=None,
+│    ):
+│        self.rule()
+│
+⋮
+│        def suspend_to_bg(event):
+⋮
+│    def add_to_input_history(self, inp):
+⋮
+│    def display_user_input(self, inp):
+⋮
+│    def user_input(self, inp, log_only=True):
+⋮
+│    def offer_url(self, url, prompt="Open URL for more info?", allow_never=True):
+⋮
+│    @restore_multiline
+│    def confirm_ask(
+│        self,
+│        question,
+│        default="y",
+│        subject=None,
+│        explicit_yes_required=False,
+│        group=None,
+│        allow_never=False,
+⋮
+│    def tool_error(self, message="", strip=True):
+⋮
+│    def tool_warning(self, message="", strip=True):
+⋮
+│    def tool_output(self, *messages, log_only=False, bold=False):
+⋮
+│    def print(self, message=""):
+⋮
+│    def get_default_notification_command(self):
+⋮
+│    def ring_bell(self):
+⋮
+│    def append_chat_history(self, text, linebreak=False, blockquote=False, strip=True):
+⋮
+│    def format_files_for_input(self, rel_fnames, rel_read_only_fnames):
+⋮
+
+aider\llm.py:
+⋮
+│class LazyLiteLLM:
+⋮
+
+aider\mdstream.py:
+⋮
+│class NoInsetMarkdown(Markdown):
+⋮
+│class MarkdownStream:
+│    """Streaming markdown renderer that progressively displays content with a live updating window.
+│
+│    Uses rich.console and rich.live to render markdown content with smooth scrolling
+│    and partial updates. Maintains a sliding window of visible content while streaming
+│    in new markdown text.
+⋮
+│    def update(self, text, final=False):
+⋮
+
+aider\models.py:
+⋮
+│class ModelInfoManager:
+│    MODEL_INFO_URL = (
+│        "https://raw.githubusercontent.com/BerriAI/litellm/main/"
+│        "model_prices_and_context_window.json"
+⋮
+│    def get_model_from_cached_json_db(self, model):
+⋮
+│    def get_model_info(self, model):
+⋮
+│class Model(ModelSettings):
+│    def __init__(
+│        self, model, weak_model=None, editor_model=None, editor_edit_format=None, verbose=False
+⋮
+│    def get_model_info(self, model):
+⋮
+│    def token_count(self, messages):
+⋮
+│    def send_completion(self, messages, functions, stream, temperature=None):
+⋮
+│    def simple_send_with_retries(self, messages):
+⋮
+
+aider\onboarding.py:
+⋮
+│def check_openrouter_tier(api_key):
+⋮
+│def try_to_select_default_model():
+⋮
+│def offer_openrouter_oauth(io, analytics):
+⋮
+│def select_default_model(args, io, analytics):
+⋮
+│def find_available_port(start_port=8484, end_port=8584):
+⋮
+│def generate_pkce_codes():
+⋮
+│def exchange_code_for_key(code, code_verifier, io):
+⋮
+│def start_openrouter_oauth_flow(io, analytics):
+⋮
+│class DummyAnalytics:
+⋮
+
+aider\openrouter.py:
+⋮
+│class OpenRouterModelManager:
+│    MODELS_URL = "https://openrouter.ai/api/v1/models"
+⋮
+│    def get_model_info(self, model: str) -> Dict:
+⋮
+
+aider\prompts.py:
+⋮
+│commit_system = """You are an expert software engineer that generates concise, \
+⋮
+│undo_command_reply = (
+│    "I did `git reset --hard HEAD~1` to discard the last edits. Please wait for further"
+│    " instructions before attempting that change again. Feel free to ask relevant questions about"
+│    " why the changes were reverted."
+⋮
+│added_files = (
+│    "I added these files to the chat: {fnames}\nLet me know if there are others we should add."
+⋮
+│run_output = """I ran this command:
+│
+│{command}
+│
+│And got this output:
+│
+│{output}
+⋮
+│summary_prefix = "I spoke to you previously about a number of things.\n"
+
+aider\reasoning_tags.py:
+⋮
+│REASONING_TAG = "thinking-content-" + "7bbeb8e1441453ad999a0bbba8a46d4b"
+│# Output formatting
+│REASONING_START = "--------------\n► **THINKING**"
+│REASONING_END = "------------\n► **ANSWER**"
+│
+⋮
+
+aider\repo.py:
+⋮
+│class GitRepo:
+│    repo = None
+⋮
+│    def diff_commits(self, pretty, from_commit, to_commit):
+⋮
+│    def get_tracked_files(self):
+⋮
+│    def abs_root_path(self, path):
+⋮
+│    def is_dirty(self, path=None):
+⋮
+│    def get_head_commit_sha(self, short=False):
+⋮
+
+aider\repomap.py:
+⋮
+│class RepoMap:
+│    TAGS_CACHE_DIR = f".aider.tags.cache.v{CACHE_VERSION}"
+│
+⋮
+│    def token_count(self, text):
+⋮
+
+aider\report.py:
+⋮
+│def get_python_info():
+⋮
+│def get_os_info():
+⋮
+│def get_git_info():
+⋮
+│def report_github_issue(issue_text, title=None, confirm=True):
+⋮
+│def report_uncaught_exceptions():
+⋮
+
+aider\run_cmd.py:
+⋮
+│def get_windows_parent_process_name():
+⋮
+│def run_cmd_subprocess(command, verbose=False, cwd=None, encoding=sys.stdout.encoding):
+⋮
+│def run_cmd_pexpect(command, verbose=False, cwd=None):
+⋮
+
+aider\scrape.py:
+⋮
+│def has_playwright():
+⋮
+│class Scraper:
+│    pandoc_available = None
+⋮
+│    def scrape(self, url):
+⋮
+
+aider\sendchat.py:
+⋮
+│def ensure_alternating_roles(messages):
+⋮
+
+aider\special.py:
+⋮
+│def is_important(file_path):
+⋮
+
+aider\utils.py:
+⋮
+│class GitTemporaryDirectory(ChdirTemporaryDirectory):
+⋮
+│def is_image_file(file_name):
+⋮
+│def safe_abs_path(res):
+⋮
+│def format_messages(messages, title=None):
+⋮
+│def split_chat_history_markdown(text, include_tool=False):
+│    messages = []
+⋮
+│    def append_msg(role, lines):
+⋮
+│def get_pip_install(args):
+⋮
+│def run_install(cmd):
+⋮
+│def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=False):
+⋮
+│def printable_shell_command(cmd_list):
+⋮
+
+aider\voice.py:
+⋮
+│class SoundDeviceError(Exception):
+⋮
+│class Voice:
+│    max_rms = 0
+⋮
+│    def record_and_transcribe(self, history=None, language=None):
+⋮
+│    def raw_record_and_transcribe(self, history, language):
+⋮
+
+aider\waiting.py:
+⋮
+│class WaitingSpinner:
+│    """Background spinner that can be started/stopped safely."""
+│
+⋮
+│    def start(self):
+⋮
+│    def stop(self):
+⋮
+
+aider\watch.py:
+⋮
+│class FileWatcher:
+│    """Watches source files for changes and AI comments"""
+│
+⋮
+│    def start(self):
+⋮
+│    def stop(self):
+⋮
+│    def process_changes(self):
+⋮
+│    def get_ai_comments(self, filepath):
+⋮
+
+aider\watch_prompts.py:
+│watch_code_prompt = """
+⋮
+│watch_ask_prompt = """/ask
+│Find the "AI" comments below (marked with █) in the code files I've shared with you.
+│They contain my questions that I need you to answer and other instructions for you.
+⋮
+
+aider\website\_includes\code-in-json-benchmark.js:
+⋮
+│    function getAspectRatio() {
+│        var width = chartContainer.offsetWidth;
+│        // Gradually change aspect ratio from 2 (landscape) to 1 (square)
+│        return Math.max(1, Math.min(2, width / 300));
+⋮
+│    function resizeChart() {
+│        chart.options.aspectRatio = getAspectRatio();
+│        chart.resize();
+⋮
+│function createStripedCanvas(isStrict) {
+│    const patternCanvas = document.createElement('canvas');
+│    const patternContext = patternCanvas.getContext('2d');
+│    const size = 10;
+│    patternCanvas.width = size;
+│    patternCanvas.height = size;
+│
+│    patternContext.fillStyle = 'rgba(255, 99, 132, 0.8)';
+│    patternContext.fillRect(0, 0, size, size);
+│
+⋮
+
+aider\website\_includes\code-in-json-syntax.js:
+⋮
+│    function getAspectRatio() {
+│        var width = chartContainer.offsetWidth;
+│        // Gradually change aspect ratio from 2 (landscape) to 1 (square)
+│        return Math.max(1, Math.min(2, width / 300));
+⋮
+│    function resizeChart() {
+│        chart.options.aspectRatio = getAspectRatio();
+│        chart.resize();
+⋮
+
+aider\website\_includes\leaderboard.js:
+⋮
+│    allData.push({
+│      model: '{{ row.model }}',
+│      pass_rate: {{ row[pass_rate_field] }},
+│      percent_cases_well_formed: {{ row.percent_cases_well_formed }},
+│      edit_format: '{{ row.edit_format | default: "diff" }}',
+│      total_cost: {{ row.total_cost | default: 0 }}
+│    });
+│  {% endfor %}
+│
+│  function updateChart() {
+│    var selectedRows = document.querySelectorAll('tr.selected');
+│    var showAll = selectedRows.length === 0;
+│
+│    displayedData = [];
+│    leaderboardData.labels = [];
+│    leaderboardData.datasets[0].data = [];
+│    leaderboardData.datasets[1].data = [];
+│
+│    allData.forEach(function(row, index) {
+⋮
+
+aider\website\_includes\quant-chart.js:
+⋮
+│  function updateChart(filterText) {
+│    var filteredData = allData.filter(row => 
+│      row.model.toLowerCase().includes(filterText.toLowerCase())
+│    );
+│    
+│    var chartData = {
+│      labels: filteredData.map(row => row.model),
+│      datasets: [{
+│        label: 'Percent completed correctly',
+│        data: filteredData.map(row => row.pass_rate_2),
+⋮
+
+aider\website\_includes\qwq-chart.js:
+⋮
+│  function updateChart(filterText) {
+│    var filteredData = allData.filter(row => 
+│      row.model.toLowerCase().includes(filterText.toLowerCase())
+│    );
+│    
+│    var chartData = {
+│      labels: filteredData.map(row => row.model),
+│      datasets: [{
+│        data: filteredData.map(row => row.pass_rate_2),
+│        backgroundColor: filteredData.map(row => 
+⋮
+
+aider\website\assets\asciinema\asciinema-player.min.js:
+│var AsciinemaPlayer=function(A){"use strict";function g(A){return"number"==typeof A?A:"string"==typ
+
+benchmark\benchmark.py:
+⋮
+│def cleanup_test_output(output, testdir):
+⋮
+
+benchmark\over_time.py:
+⋮
+│class BenchmarkPlotter:
+│    LABEL_FONT_SIZE = 16
+│
+⋮
+│    def load_data(self, yaml_file: str) -> List[ModelData]:
+⋮
+
+benchmark\prompts.py:
+│instructions_addendum = """
+⋮
+│test_failures = """
+│####
+│
+│See the testing errors above.
+│The tests are correct, don't try and change them.
+│Fix the code in {file_list} to resolve the errors.
+⋮
+
+benchmark\refactor_tools.py:
+⋮
+│class ParentNodeTransformer(ast.NodeTransformer):
+│    """
+│    This transformer sets the 'parent' attribute on each node.
+⋮
+│    def generic_visit(self, node):
+⋮
+
+benchmark\rungrid.py:
+⋮
+│def run(dirname, model, edit_format):
+⋮
+
+benchmark\swe_bench.py:
+⋮
+│def plot_swe_bench(data_file, is_lite):
+⋮
+
+scripts\30k-image.py:
+⋮
+│def embed_font():
+⋮
+│def generate_confetti(count=150, width=DEFAULT_WIDTH, height=DEFAULT_HEIGHT):
+⋮
+│def generate_celebration_svg(output_path=None, width=DEFAULT_WIDTH, height=DEFAULT_HEIGHT):
+⋮
+
+scripts\blame.py:
+⋮
+│def get_all_commit_hashes_between_tags(start_tag, end_tag=None):
+⋮
+│def run(cmd):
+⋮
+│def get_commit_authors(commits):
+⋮
+│def process_all_tags_since(start_tag):
+⋮
+│def get_latest_version_tag():
+⋮
+│def get_counts_for_file(start_tag, end_tag, authors, fname):
+⋮
+│def get_all_tags_since(start_tag):
+⋮
+│def get_tag_date(tag):
+⋮
+
+scripts\clean_metadata.py:
+⋮
+│def find_block_lines(lines, key_to_remove):
+⋮
+│def remove_block_surgically(file_path, key_to_remove):
+⋮
+
+scripts\dl_icons.py:
+⋮
+│def download_icon(icon_name):
+⋮
+
+scripts\history_prompts.py:
+│history_prompt = """
+⋮
+
+scripts\logo_svg.py:
+⋮
+│def subset_font(font_path, text):
+⋮
+│def generate_svg_with_embedded_font(font_path, text="aider", color="#14b014", output_path=None):
+⋮
+
+scripts\my_models.py:
+⋮
+│def collect_model_stats(n_lines=1000):
+⋮
+│def format_text_table(model_stats):
+⋮
+
+scripts\tsl_pack_langs.py:
+⋮
+│def get_default_branch(owner, repo):
+⋮
+│def try_download_tags(owner, repo, branch, directory, output_path):
+⋮
+
+scripts\update-history.py:
+⋮
+│def get_latest_version_from_history():
+⋮
+│def run_git_log():
+⋮
+│def run_git_diff():
+⋮
+
+scripts\yank-old-versions.py:
+⋮
+│def get_versions_supporting_python38_or_lower(package_name):
+⋮
+
+tests\basic\test_onboarding.py:
+⋮
+│class DummyAnalytics:
+⋮
+│class DummyIO:
+│    def tool_output(self, *args, **kwargs):
+⋮
+│    def tool_warning(self, *args, **kwargs):
+⋮
+│    def tool_error(self, *args, **kwargs):
+⋮
+│    def confirm_ask(self, *args, **kwargs):
+⋮
+│    def offer_url(self, *args, **kwargs):
+⋮
+
+tests\fixtures\languages\arduino\test.ino:
+⋮
+│void setup() {
+│  // Initialize serial communication
+│  Serial.begin(9600);
+│  pinMode(LED_BUILTIN, OUTPUT);
+⋮
+│void loop() {
+│  // Main code that runs repeatedly
+│  digitalWrite(LED_BUILTIN, HIGH);
+│  delay(1000);
+│  digitalWrite(LED_BUILTIN, LOW);
+│  delay(1000);
+│  Serial.println("Blinking LED");
+⋮
+│int calculateDelay(int baseDelay, int multiplier) {
+│  return baseDelay * multiplier;
+⋮
+
+tests\fixtures\languages\c\test.c:
+⋮
+│void print_message(const char *message) {
+│    printf("%s\n", message);
+⋮
+
+tests\fixtures\languages\chatito\test.chatito:
+⋮
+│%[name]('training': '50', 'testing': '50')
+⋮
+│~[endPolite]
+⋮
+
+tests\fixtures\languages\csharp\test.cs:
+⋮
+│namespace Greetings {
+│    public interface IGreeter {
+│        string Greet(string name);
+│    }
+│
+│    public class Person {
+│        public string Name { get; set; }
+│        public int Age { get; set; }
+│
+│        public Person(string name, int age) {
+⋮
+│    public class FormalGreeter : IGreeter {
+│        private const string PREFIX = "Good day";
+│        private static readonly int MAX_AGE = 150;
+│
+│        public string Greet(string name) {
+│            return $"{PREFIX}, {name}!";
+│        }
+│
+│        public string GreetPerson(Person person) {
+│            return $"{PREFIX}, {person.Name} ({person.Age})!";
+⋮
+
+tests\fixtures\languages\d\test.d:
+⋮
+│class Greeter {
+│    private string name;
+│    
+│    this(string name) {
+│        this.name = name;
+│    }
+│    
+│    string greet() {
+│        return "Hello, " ~ name ~ "!";
+│    }
+⋮
+
+tests\fixtures\languages\elixir\test.ex:
+⋮
+│  def hello(name) do
+│    IO.puts("Hello, #{name}!")
+⋮
+
+tests\fixtures\languages\elm\test.elm:
+⋮
+│type Greeting
+⋮
+│defaultPerson =
+⋮
+│newPerson name age =
+⋮
+
+tests\fixtures\languages\go\test.go:
+⋮
+│type FormalGreeter struct {
+│    Prefix string
+⋮
+│func NewFormalGreeter() *FormalGreeter {
+│    return &FormalGreeter{Prefix: "Good day"}
+⋮
+
+tests\fixtures\languages\hcl\test.tf:
+⋮
+│variable "aws_region" {
+│  description = "AWS region for resources"
+│  type        = string
+│  default     = "us-west-2"
+⋮
+│variable "environment" {
+│  description = "Environment name"
+│  type        = string
+⋮
+│resource "aws_subnet" "public" {
+⋮
+
+tests\fixtures\languages\java\test.java:
+│public interface Greeting {
+⋮
+
+tests\fixtures\languages\javascript\test.js:
+⋮
+│class Person {
+│    constructor(name) {
+│        this.name = name;
+│    }
+│
+│    sayHello() {
+│        return `Hello, ${this.name}!`;
+│    }
+⋮
+
+tests\fixtures\languages\kotlin\test.kt:
+│interface Greeting {
+⋮
+
+tests\fixtures\languages\ocaml\test.ml:
+⋮
+│module Greeter = struct
+│  type person = {
+│    name: string;
+│    age: int
+│  }
+│
+│  let create_person name age =
+│    {name; age}
+│
+│  let greet person =
+⋮
+
+tests\fixtures\languages\ocaml_interface\test.mli:
+⋮
+│module Greeter : sig
+│  type person = {
+│    name: string;
+│    age: int
+│  }
+│
+│  val create_person : string -> int -> person
+│
+│  val greet : person -> unit
+⋮
+
+tests\fixtures\languages\properties\test.properties:
+⋮
+│server.maxConnections=100
+
+tests\fixtures\languages\python\test.py:
+⋮
+│class Person:
+│    """A class representing a person."""
+│
+⋮
+│    def greet(self, formal: bool = False) -> str:
+⋮
+
+tests\fixtures\languages\r\test.r:
+⋮
+│process_data <- function(data) {
+│  # Process some data
+│  return(data * 2)
+⋮
+
+tests\fixtures\languages\rust\test.rs:
+⋮
+│trait Greeting {
+│    fn greet(&self) -> String;
+⋮
+
+tests\fixtures\languages\scala\test.scala:
+⋮
+│class FormalGreeter(prefix: String) extends Greeter {
+│  // A method definition
+│  override def greet(name: String): String = {
+│    s"$prefix, $name!"
+│  }
+│  
+│  // A val definition
+│  val defaultPrefix: String = "Hello"
+│  
+│  // A var definition
+⋮
+│enum Greeting {
+│  // Simple enum cases
+│  case Hello, Hi, Hey
+│  
+│  // Full enum case with parameters
+│  case Custom(text: String)
+⋮
+│class Container[T](val value: T) {
+│  def map[U](f: T => U): Container[U] = new Container(f(value))
+⋮
+│case class Person(name: String, age: Int) {
+│  def introduce(): String = {
+│    val greeter = GreeterFactory.createGreeter(age > 30)
+│    greeter.greet(name) + s" I am $age years old."
+│  }
+⋮
+│class CasualGreeter extends Greeter {
+│  override def greet(name: String): String = s"Hey, $name!"
+⋮
+
+tests\fixtures\languages\solidity\test.sol:
+⋮
+│contract SimpleStorage {
+│    uint256 private value;
+│    
+│    event ValueChanged(uint256 newValue);
+│    
+│    constructor(uint256 initialValue) {
+│        value = initialValue;
+│    }
+│    
+│    function setValue(uint256 newValue) public {
+⋮
+
+tests\fixtures\languages\swift\test.swift:
+⋮
+│class Greeter {
+│    let name: String
+│    
+│    init(name: String) {
+│        self.name = name
+│    }
+│    
+│    func greet() -> String {
+│        return "Hello, \(name)!"
+│    }
+⋮
+│func exampleGreeting() {
+│    let greeter = Greeter(name: "World")
+│    print(greeter.greet())
+⋮
+
+tests\fixtures\languages\udev\test.rules:
+⋮
+│LABEL="my_peripheral"
+⋮
+
+tests\fixtures\sample-code-base\sample.js:
+⋮
+│function calculateCircleArea(radius) {
+│    return Math.PI * radius * radius;
+⋮
+│function reverseString(str) {
+│    return str.split('').reverse().join('');
+⋮
+│function getRandomNumber(min, max) {
+│    return Math.floor(Math.random() * (max - min + 1)) + min;
+⋮
+│function filterEvenNumbers(numbers) {
+│    return numbers.filter(num => num % 2 !== 0);
+⋮
+
+tests\fixtures\sample-code-base\sample.py:
+⋮
+│class Garage:
+│    def __init__(self):
+⋮
+│    def remove_car(self, car):
+⋮
+│    def list_cars(self):
+⋮
+
+tests\fixtures\watch.js:
+⋮
+│function dummyFunction() {
+│    // ai inside 8 function
+│    return true;
+⋮
+
+tests\fixtures\watch.lisp:
+⋮
+│(defun add (a b)
+│  ; ai! fix this function to handle nil values
+⋮
+
+tests\fixtures\watch.py:
+⋮
+│def dummy_function():
+⋮
+
+tests\scrape\test_playwright_disable.py:
+⋮
+│class DummyIO:
+│    def __init__(self):
+│        self.outputs = []
+⋮
+│    def tool_output(self, msg):
+⋮
+│    def confirm_ask(self, msg, default="y"):
+⋮
+│    def tool_error(self, msg):
+⋮
+│def test_commands_web_disable_playwright(monkeypatch):
+│    """
+│    Test that Commands.cmd_web does not emit a misleading warning when --disable-playwright is set.
+⋮
+│    class DummyIO:
+│        def __init__(self):
+│            self.outputs = []
+│            self.warnings = []
+⋮
+│        def tool_output(self, msg, *a, **k):
+⋮
+│        def tool_warning(self, msg, *a, **k):
+⋮
+│        def tool_error(self, msg, *a, **k):
+⋮
+│        def read_text(self, filename, silent=False):
+⋮
+│        def confirm_ask(self, *a, **k):
+⋮
+│        def print(self, *a, **k):
+⋮
+│    class DummyCoder:
+│        def __init__(self):
+│            self.cur_messages = []
+⋮
+│        def get_inchat_relative_files(self):
+⋮
+│        def abs_root_path(self, fname):
+⋮
+│        def get_announcements(self):
+⋮
+│    class DummyScraper:
+│        def __init__(self, **kwargs):
+⋮
+│        def scrape(self, url):
+⋮
+
